@@ -80,11 +80,11 @@ function converter(textField,tochangeField,toconv) {
     if(tochangeField != textFieldInFocus) {
         if(toconv == "uni2zg") {
               tochangeField.value = Rabbit.uni2zg(textField.value);
-              bitexts.value = "---(Zawgyi)---\n" + zawgyi.value + "\n\n ---(Unicode)--- \n" + unicode.value;
+              bitexts.value = "(Zawgyi)\n" + zawgyi.value + "\n\n------------------------------\n\n(Unicode)\n" + unicode.value;
             }
             else {
               tochangeField.value = Rabbit.zg2uni(textField.value);
-              bitexts.value = "---(Zawgyi)---\n" +zawgyi.value + "\n\n ---(Unicode)--- \n" + unicode.value;
+              bitexts.value = "(Zawgyi)\n" +zawgyi.value + "\n\n------------------------------\n\n(Unicode)\n" + unicode.value;
         }
     }
 }
