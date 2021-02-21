@@ -1,4 +1,5 @@
-# Rabbit
+# Rabbit (mod)
+- a quick makeshift mod to get both texts in one textarea to use for editorial purposes.
 
 ![Logo](./rabbit_100.png)
 
