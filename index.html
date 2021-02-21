@@ -31,7 +31,7 @@
         </section>
         
         <section id="Zawgyi">
-            <h3>Zawgyi</h3>
+            <h3 style="color: teal;">Zawgyi</h3>
             <textarea id="zawgyi" onfocus="handleOnFocus(this)" onblur="handleOnBlur()">သီဟိုဠ္မွ ဉာဏ္ႀကီးရွင္သည္ အာယုဝၯနေဆးၫႊန္းစာကို ဇလြန္ေဈးေဘး ဗာဒံပင္ထက္ အဓိ႒ာန္လ်က္ ဂဃနဏဖတ္ခဲ့သည္။</textarea>
         </section>
     </div>
@@ -40,8 +40,17 @@
         <input type="button" value="Clear Text" onclick="clearText()">
         <input type="button" value="Copy Zawgyi" onclick="copyZawgyi()">
         <input type="button" value="Copy Unicode" onclick="copyUnicode()">
+      </section>
+      <section style="width: 80%; margin: 0 auto;">
+        <section id="bothTexts">
+          <h3>Both Texts</h3>
+          <input type="button" value="Copy Texts" onclick="copyBiTexts()">
+          <hr>
+          <textarea id="bitexts">သီဟိုဠ်မှ ဉာဏ်ကြီးရှင်သည် အာယုဝဍ္ဎနဆေးညွှန်းစာကို ဇလွန်ဈေးဘေး ဗာဒံပင်ထက် အဓိဋ္ဌာန်လျက် ဂဃနဏဖတ်ခဲ့သည်။</textarea>
+        </section>
     </section>
   </div>
+
 	<footer>
 		Found a bug ? Please , open <a href="https://github.com/Rabbit-Converter/Rabbit/issues/new">new issue</a>.
 	</footer>
@@ -62,6 +71,7 @@ function handleOnBlur()
 
 var unicode = document.getElementById("unicode");
 var zawgyi = document.getElementById("zawgyi");
+var bitexts = document.getElementById("bitexts")
 
 onchangeHandler(unicode,zawgyi,"uni2zg");
 onchangeHandler(zawgyi,unicode,"zg2uni");
@@ -70,15 +80,18 @@ function converter(textField,tochangeField,toconv) {
     if(tochangeField != textFieldInFocus) {
         if(toconv == "uni2zg") {
               tochangeField.value = Rabbit.uni2zg(textField.value);
-        }
-        else {
-             tochangeField.value = Rabbit.zg2uni(textField.value);
+              bitexts.value = "---(Zawgyi)---\n" + zawgyi.value + "\n\n ---(Unicode)--- \n" + unicode.value;
+            }
+            else {
+              tochangeField.value = Rabbit.zg2uni(textField.value);
+              bitexts.value = "---(Zawgyi)---\n" +zawgyi.value + "\n\n ---(Unicode)--- \n" + unicode.value;
         }
     }
 }
 
 function onchangeHandler(textField,tochangeField,toconv) {
-    
+
+
     if (textField.addEventListener) {
       textField.addEventListener('input', function() {
           converter(textField,tochangeField,toconv);
@@ -89,8 +102,23 @@ function onchangeHandler(textField,tochangeField,toconv) {
           converter(textField,tochangeField,toconv);
       });
     }
-    
+
+   
+
 }
+
+function copyBiTexts() {
+  /* Get the text field */
+  var copyText = document.getElementById("bitexts");
+
+  /* Select the text field */
+  copyText.select(); 
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+}
+
 
 function copyZawgyi() {
   /* Get the text field */
