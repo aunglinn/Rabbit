@@ -1,5 +1,4 @@
-# Rabbit (mod)
-- a quick makeshift mod to get both texts in one textarea to use for editorial purposes.
+# Rabbit
 
 ![Logo](./rabbit_100.png)
 
@@ -52,3 +51,6 @@ You can get build result under the `output` folder.
 
 - add kotlin and using hash map instead of json. Thanks @vincent-paing
 - remove swift 1 and 2 in compile list. No more support.
+
+### 2/20/2021
+- a quick makeshift mod to get both texts in one textarea to use for editorial purposes.
